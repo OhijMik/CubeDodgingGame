@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwopvxphrfxu"]
+
+[ext_resource type="Script" path="res://Multiplayer/multiplayer_game_scene.gd" id="1_nylgb"]
+[ext_resource type="PackedScene" uid="uid://fj4ouhttn3x2" path="res://Player/player.tscn" id="2_44tg3"]
+[ext_resource type="Texture2D" uid="uid://bhgdhpr1rpc4v" path="res://Images/WhiteBackground.jpg" id="3_cnjg7"]
+[ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="4_jxm1n"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="5_we75o"]
+[ext_resource type="Script" path="res://round.gd" id="6_ra478"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pk2ng"]
+size = Vector2(13, 688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk63a"]
+size = Vector2(1178, 20)
+
+[node name="MultiplayerGameScene" type="Node2D"]
+script = ExtResource("1_nylgb")
+player_scene = ExtResource("2_44tg3")
+
+[node name="Background" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="Sprite2D" parent="Background"]
+position = Vector2(576, 326)
+scale = Vector2(0.00233334, 0.165)
+texture = ExtResource("3_cnjg7")
+metadata/_edit_lock_ = true
+
+[node name="WallCollision" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/WallCollision"]
+position = Vector2(-6.5, 328)
+shape = SubResource("RectangleShape2D_pk2ng")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/WallCollision"]
+position = Vector2(576, 328)
+shape = SubResource("RectangleShape2D_pk2ng")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/WallCollision"]
+position = Vector2(1160, 320)
+shape = SubResource("RectangleShape2D_pk2ng")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/WallCollision"]
+position = Vector2(576, -8)
+shape = SubResource("RectangleShape2D_tk63a")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Background/WallCollision"]
+position = Vector2(576, 656)
+shape = SubResource("RectangleShape2D_tk63a")
+
+[node name="BlackBackground" type="Sprite2D" parent="Background"]
+show_behind_parent = true
+position = Vector2(576, 324)
+scale = Vector2(4.44788, 3.34021)
+texture = ExtResource("4_jxm1n")
+metadata/_edit_lock_ = true
+
+[node name="Enemy" type="Node2D" parent="."]
+script = ExtResource("5_we75o")
+
+[node name="Timer" type="Timer" parent="Enemy"]
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Round" type="Label" parent="UI"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+text = "Round 1 "
+script = ExtResource("6_ra478")
+
+[node name="HostButton" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 152.0
+offset_right = 743.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 40
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 280.0
+offset_right = 743.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 40
+text = "Join
+"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 408.0
+offset_right = 743.0
+offset_bottom = 489.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player/player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="timeout" from="Enemy/Timer" to="Enemy" method="_on_timer_timeout"]
+[connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
