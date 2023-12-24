@@ -10,11 +10,9 @@ var stop_spawn = false
 var round_points = 0
 
 var timer
-var enemy_triangle
 
 func _on_timer_ready():
-	timer = get_node("Timer")
-	enemy_triangle = get_node("../../EnemyTriangle")
+	timer = get_node("SpawnTimer")
 
 
 func _process(_delta):

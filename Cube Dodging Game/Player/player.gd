@@ -17,7 +17,7 @@ func _enter_tree():
 		position = Vector2(800, 320)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_multiplayer_authority() and Game.gamemode == "multiplayer":
 		movement()
 	elif Game.gamemode == "singleplayer":

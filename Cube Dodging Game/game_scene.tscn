@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Enemy/single_player_enemy_spawn.gd" id="3_bhors"]
 [ext_resource type="Script" path="res://UI/points.gd" id="5_0wo0n"]
 [ext_resource type="Script" path="res://UI/round.gd" id="5_3iv05"]
-[ext_resource type="Script" path="res://blinks.gd" id="6_p1iwt"]
-[ext_resource type="Script" path="res://speed_ups.gd" id="7_1toro"]
+[ext_resource type="Script" path="res://UI/blinks.gd" id="6_p1iwt"]
+[ext_resource type="Script" path="res://UI/speed_ups.gd" id="7_1toro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pk2ng"]
 size = Vector2(13, 688)

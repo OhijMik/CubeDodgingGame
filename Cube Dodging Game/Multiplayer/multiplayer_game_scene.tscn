@@ -18,7 +18,6 @@ script = ExtResource("1_nylgb")
 player_scene = ExtResource("2_44tg3")
 
 [node name="Background" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="Wall" type="Sprite2D" parent="Background"]
 position = Vector2(576, 326)
@@ -55,10 +54,10 @@ scale = Vector2(4.44788, 3.34021)
 texture = ExtResource("4_jxm1n")
 metadata/_edit_lock_ = true
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="EnemySpawn" type="Node2D" parent="."]
 script = ExtResource("5_afkdx")
 
-[node name="Timer" type="Timer" parent="Enemy"]
+[node name="Timer" type="Timer" parent="EnemySpawn"]
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -98,11 +97,23 @@ theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Back"
 
+[node name="StartButton" type="Button" parent="."]
+visible = false
+offset_left = 408.0
+offset_top = 280.0
+offset_right = 743.0
+offset_bottom = 361.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Player/player.tscn")
 spawn_path = NodePath("..")
 
-[connection signal="timeout" from="Enemy/Timer" to="Enemy" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
 [connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
