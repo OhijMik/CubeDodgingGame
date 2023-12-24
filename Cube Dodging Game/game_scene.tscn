@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://74eb0muj4dlj"]
+[gd_scene load_steps=10 format=3 uid="uid://74eb0muj4dlj"]
 
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="1_hd8j7"]
 [ext_resource type="PackedScene" uid="uid://fj4ouhttn3x2" path="res://Player/player.tscn" id="1_wyjas"]
-[ext_resource type="Script" path="res://Enemy/single_player_enemy.gd" id="3_bhors"]
-[ext_resource type="Script" path="res://round.gd" id="5_3iv05"]
+[ext_resource type="Script" path="res://Enemy/single_player_enemy_spawn.gd" id="3_bhors"]
+[ext_resource type="Script" path="res://UI/points.gd" id="5_0wo0n"]
+[ext_resource type="Script" path="res://UI/round.gd" id="5_3iv05"]
+[ext_resource type="Script" path="res://blinks.gd" id="6_p1iwt"]
+[ext_resource type="Script" path="res://speed_ups.gd" id="7_1toro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pk2ng"]
 size = Vector2(13, 688)
@@ -41,13 +44,18 @@ scale = Vector2(4.44788, 3.34021)
 texture = ExtResource("1_hd8j7")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_wyjas")]
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("1_wyjas")]
 position = Vector2(576, 320)
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="Timer" type="Timer" parent="Player/Player"]
+
+[node name="EnemySpawn" type="Node2D" parent="."]
 script = ExtResource("3_bhors")
 
-[node name="Timer" type="Timer" parent="Enemy"]
+[node name="SpawnTimer" type="Timer" parent="EnemySpawn"]
+wait_time = 3.0
 autostart = true
 
 [node name="UI" type="Node2D" parent="."]
@@ -61,4 +69,33 @@ theme_override_font_sizes/font_size = 30
 text = "Round 1 "
 script = ExtResource("5_3iv05")
 
-[connection signal="timeout" from="Enemy/Timer" to="Enemy" method="_on_timer_timeout"]
+[node name="Points" type="Label" parent="UI"]
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 135.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 30
+text = "Points: "
+script = ExtResource("5_0wo0n")
+
+[node name="Blink" type="Label" parent="UI"]
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 135.0
+offset_bottom = 146.0
+theme_override_font_sizes/font_size = 30
+text = "Blinks: "
+script = ExtResource("6_p1iwt")
+
+[node name="SpeedUp" type="Label" parent="UI"]
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 135.0
+offset_bottom = 194.0
+theme_override_font_sizes/font_size = 30
+text = "Speed ups: "
+script = ExtResource("7_1toro")
+
+[connection signal="timeout" from="Player/Player/Timer" to="Player/Player" method="_on_timer_timeout"]
+[connection signal="ready" from="EnemySpawn/SpawnTimer" to="EnemySpawn" method="_on_timer_ready"]
+[connection signal="timeout" from="EnemySpawn/SpawnTimer" to="EnemySpawn" method="_on_timer_timeout"]

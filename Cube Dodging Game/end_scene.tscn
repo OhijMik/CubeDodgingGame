@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkn5o6xefsdff"]
+[gd_scene load_steps=4 format=3 uid="uid://bkn5o6xefsdff"]
 
 [ext_resource type="Script" path="res://EndScene.gd" id="1_eytok"]
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="2_b5voi"]
+[ext_resource type="Script" path="res://UI/end_game_stats.gd" id="3_fok4k"]
 
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_eytok")
@@ -30,6 +31,28 @@ position = Vector2(576, 324)
 scale = Vector2(4.44788, 3.34021)
 texture = ExtResource("2_b5voi")
 metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 48.0
+offset_right = 736.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Statistics" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 136.0
+offset_right = 784.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 20
+text = "Round                   Points: 
+
+Highest round:
+Highest points: "
+horizontal_alignment = 1
+script = ExtResource("3_fok4k")
 
 [connection signal="button_down" from="StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="QuitButton" to="." method="_on_quit_button_button_down"]

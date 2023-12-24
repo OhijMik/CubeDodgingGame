@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://fj4ouhttn3x2" path="res://Player/player.tscn" id="2_44tg3"]
 [ext_resource type="Texture2D" uid="uid://bhgdhpr1rpc4v" path="res://Images/WhiteBackground.jpg" id="3_cnjg7"]
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="4_jxm1n"]
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="5_we75o"]
-[ext_resource type="Script" path="res://round.gd" id="6_ra478"]
+[ext_resource type="Script" path="res://Multiplayer/multiplayer_enemy_spawn.gd" id="5_afkdx"]
+[ext_resource type="Script" path="res://UI/round.gd" id="6_ra478"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pk2ng"]
 size = Vector2(13, 688)
@@ -56,7 +56,7 @@ texture = ExtResource("4_jxm1n")
 metadata/_edit_lock_ = true
 
 [node name="Enemy" type="Node2D" parent="."]
-script = ExtResource("5_we75o")
+script = ExtResource("5_afkdx")
 
 [node name="Timer" type="Timer" parent="Enemy"]
 
