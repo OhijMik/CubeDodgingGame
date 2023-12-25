@@ -11,3 +11,5 @@ var enemy_triangle_speed = 180.0
 
 var blink_amount = 1
 var speed_up_amount = 1
+
+var player2id

@@ -2,6 +2,7 @@ extends Node2D
 
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene: PackedScene
+var file = 'res://PlayerInfo.txt'
 
 
 func _on_host_button_pressed():
@@ -26,6 +27,10 @@ func _on_join_button_pressed():
 	_change_visibility("HostButton")
 	_change_visibility("JoinButton")
 	_change_visibility("BackButton")
+	
+	var f = FileAccess.open(file, FileAccess.WRITE)
+	f.store_string(str(multiplayer.multiplayer_peer.get_unique_id()))
+	f.close()
 
 
 func _on_back_button_pressed():

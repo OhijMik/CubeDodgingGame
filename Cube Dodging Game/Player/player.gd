@@ -18,6 +18,7 @@ func _enter_tree():
 
 
 func _physics_process(_delta):
+	print(get_node("."))
 	if is_multiplayer_authority() and Game.gamemode == "multiplayer":
 		movement()
 	elif Game.gamemode == "singleplayer":

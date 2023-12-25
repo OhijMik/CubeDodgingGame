@@ -70,6 +70,15 @@ theme_override_font_sizes/font_size = 30
 text = "Round 1 "
 script = ExtResource("6_ra478")
 
+[node name="Error" type="Label" parent="UI"]
+visible = false
+offset_left = 408.0
+offset_top = 536.0
+offset_right = 744.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 30
+text = "Room not created yet"
+
 [node name="HostButton" type="Button" parent="."]
 offset_left = 408.0
 offset_top = 152.0
