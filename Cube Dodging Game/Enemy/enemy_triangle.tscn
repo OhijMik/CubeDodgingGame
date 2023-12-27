@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://brosirc5itm8c"]
+[gd_scene load_steps=5 format=3 uid="uid://brosirc5itm8c"]
 
 [ext_resource type="Script" path="res://Enemy/enemy_triangle.gd" id="1_xoacv"]
 [ext_resource type="Texture2D" uid="uid://dshjhkm258qbm" path="res://Images/OrangeTriangle.png" id="2_053um"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mivn4"]
 size = Vector2(13, 13)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2v7xs"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="EnemyTriangle" type="CharacterBody2D"]
 script = ExtResource("1_xoacv")
@@ -19,6 +24,9 @@ texture = ExtResource("2_053um")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, -8)
 shape = SubResource("RectangleShape2D_mivn4")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2v7xs")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="child_entered_tree" from="Area2D/CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]

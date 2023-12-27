@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 var player
 var file = 'res://PlayerInfo.txt'
+var triangle = preload("res://Enemy/enemy_triangle.tscn")
+
+
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+		
 
 func _ready():
 	if Game.gamemode == "singleplayer":
@@ -12,8 +18,8 @@ func _ready():
 		look_at(player.position)
 	else:
 		if position.x >= 0 and position.x <= 570:
-			player = get_node("../../1")
-			var direction = (player.position - self.position).normalized()
+			player = get_node("/root/MultiplayerGameScene/1")
+			var direction = (player.position - position).normalized()
 			velocity.x = direction.x * Game.enemy_triangle_speed
 			velocity.y = direction.y * Game.enemy_triangle_speed
 			look_at(player.position)
@@ -21,7 +27,7 @@ func _ready():
 			var f = FileAccess.open(file, FileAccess.READ)
 			var path = "../../" + f.get_as_text()
 			f.close()
-			# var path = "../../" + str(Game.player2id)
+
 			player = get_node(path)
 			var direction = (player.position - self.position).normalized()
 			velocity.x = direction.x * Game.enemy_triangle_speed

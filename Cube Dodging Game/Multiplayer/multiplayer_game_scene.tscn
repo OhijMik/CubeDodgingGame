@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwopvxphrfxu"]
+[gd_scene load_steps=10 format=3 uid="uid://cwopvxphrfxu"]
 
 [ext_resource type="Script" path="res://Multiplayer/multiplayer_game_scene.gd" id="1_nylgb"]
 [ext_resource type="PackedScene" uid="uid://fj4ouhttn3x2" path="res://Player/player.tscn" id="2_44tg3"]
 [ext_resource type="Texture2D" uid="uid://bhgdhpr1rpc4v" path="res://Images/WhiteBackground.jpg" id="3_cnjg7"]
+[ext_resource type="PackedScene" uid="uid://brosirc5itm8c" path="res://Enemy/enemy_triangle.tscn" id="3_fwxkn"]
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="4_jxm1n"]
 [ext_resource type="Script" path="res://Multiplayer/multiplayer_enemy_spawn.gd" id="5_afkdx"]
 [ext_resource type="Script" path="res://UI/round.gd" id="6_ra478"]
@@ -16,6 +17,7 @@ size = Vector2(1178, 20)
 [node name="MultiplayerGameScene" type="Node2D"]
 script = ExtResource("1_nylgb")
 player_scene = ExtResource("2_44tg3")
+enemy_scene = ExtResource("3_fwxkn")
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -79,7 +81,9 @@ offset_bottom = 578.0
 theme_override_font_sizes/font_size = 30
 text = "Room not created yet"
 
-[node name="HostButton" type="Button" parent="."]
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="HostButton" type="Button" parent="Buttons"]
 offset_left = 408.0
 offset_top = 152.0
 offset_right = 743.0
@@ -87,7 +91,7 @@ offset_bottom = 232.0
 theme_override_font_sizes/font_size = 40
 text = "Host"
 
-[node name="JoinButton" type="Button" parent="."]
+[node name="JoinButton" type="Button" parent="Buttons"]
 offset_left = 408.0
 offset_top = 280.0
 offset_right = 743.0
@@ -96,7 +100,7 @@ theme_override_font_sizes/font_size = 40
 text = "Join
 "
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="Buttons"]
 offset_left = 408.0
 offset_top = 408.0
 offset_right = 743.0
@@ -106,7 +110,7 @@ theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Back"
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="Buttons"]
 visible = false
 offset_left = 408.0
 offset_top = 280.0
@@ -118,11 +122,11 @@ theme_override_font_sizes/font_size = 40
 text = "Start"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Player/player.tscn")
+_spawnable_scenes = PackedStringArray("res://Player/player.tscn", "res://Enemy/enemy_triangle.tscn")
 spawn_path = NodePath("..")
 
-[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
-[connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="EnemySpawn/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Buttons/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="Buttons/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
