@@ -27,5 +27,9 @@ func _on_timer_timeout():
 		triangleTemp2.position = Vector2(583, rng.randi_range(0, 650))
 	else:
 		triangleTemp2.position = Vector2(1180, rng.randi_range(0, 650))
-	add_child(triangleTemp1)
-	add_child(triangleTemp2)
+	#add_child(triangleTemp1)
+	#add_child(triangleTemp2)
+	
+	var peer = ENetMultiplayerPeer.new()
+	multiplayer.multiplayer_peer = peer
+	

@@ -11,10 +11,10 @@ func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	if Game.gamemode == "singleplayer":
 		position = Vector2(576, 320)
-	elif name == "1":
-		position = Vector2(256, 320)
 	else:
-		position = Vector2(800, 320)
+		var rng = RandomNumberGenerator.new()
+		position = Vector2(rng.randi_range(300, 850), rng.randi_range(150, 500))
+		set_collision_layer_value(1, true)
 
 
 func _physics_process(_delta):
@@ -46,3 +46,5 @@ func movement():
 func _on_timer_timeout():
 	speed_up = false
 	speed = speed / 2
+	get_node("Timer").stop()
+
