@@ -31,16 +31,17 @@ func _physics_process(_delta):
 func movement():
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * speed
-	if Input.is_action_just_pressed("BLINK") and Game.blink_amount > 0:
-		blink = true
-		original_pos = position
-		speed = 1000
-		Game.blink_amount -= 1
-	if Input.is_action_just_pressed("SPEED_UP") and Game.speed_up_amount > 0:
-		speed_up = true
-		speed = speed * 2
-		Game.speed_up_amount -= 1
-		get_node("Timer").start(5)
+	if Game.gamemode == "singleplayer":
+		if Input.is_action_just_pressed("BLINK") and Game.blink_amount > 0:
+			blink = true
+			original_pos = position
+			speed = 1000
+			Game.blink_amount -= 1
+		if Input.is_action_just_pressed("SPEED_UP") and Game.speed_up_amount > 0:
+			speed_up = true
+			speed = speed * 2
+			Game.speed_up_amount -= 1
+			get_node("Timer").start(5)
 		
 
 func _on_timer_timeout():

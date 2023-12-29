@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkn5o6xefsdff"]
+[gd_scene load_steps=5 format=3 uid="uid://bkn5o6xefsdff"]
 
 [ext_resource type="Script" path="res://EndScene.gd" id="1_eytok"]
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="2_b5voi"]
 [ext_resource type="Script" path="res://UI/end_game_stats.gd" id="3_fok4k"]
+[ext_resource type="Script" path="res://Title.gd" id="3_ukcgd"]
 
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_eytok")
@@ -32,7 +33,7 @@ scale = Vector2(4.44788, 3.34021)
 texture = ExtResource("2_b5voi")
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 offset_left = 416.0
 offset_top = 48.0
 offset_right = 736.0
@@ -40,6 +41,7 @@ offset_bottom = 117.0
 theme_override_font_sizes/font_size = 50
 text = "Game Over"
 horizontal_alignment = 1
+script = ExtResource("3_ukcgd")
 
 [node name="Statistics" type="Label" parent="."]
 offset_left = 368.0

@@ -114,7 +114,7 @@ text = "Start"
 _spawnable_scenes = PackedStringArray("res://Player/player.tscn", "res://Enemy/enemy_triangle.tscn")
 spawn_path = NodePath("..")
 
-[connection signal="timeout" from="EnemySpawn/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_timer_timeout"]
 [connection signal="pressed" from="Buttons/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="Buttons/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="Buttons/BackButton" to="." method="_on_back_button_pressed"]

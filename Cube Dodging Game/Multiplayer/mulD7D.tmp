@@ -111,7 +111,7 @@ theme_override_font_sizes/font_size = 40
 text = "Start"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Player/player.tscn", "res://Enemy/enemy_triangle.tscn")
+_spawnable_scenes = PackedStringArray("res://Player/player.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="." method="_on_timer_timeout"]
