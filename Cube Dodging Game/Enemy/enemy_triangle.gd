@@ -43,9 +43,9 @@ func _physics_process(_delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "1":
 		self.queue_free()
-		Game.winner = "player2"
-		get_tree().change_scene_to_file("res://end_scene.tscn")
+		Game.winner = "player 2"
+		get_tree().change_scene_to_file("res://Multiplayer/multiplayer_end_scene.tscn")
 	elif body.name == player2_id:
 		self.queue_free()
-		Game.winner = "player1"
-		get_tree().change_scene_to_file("res://end_scene.tscn")
+		Game.winner = "player 1"
+		get_tree().change_scene_to_file("res://Multiplayer/multiplayer_end_scene.tscn")

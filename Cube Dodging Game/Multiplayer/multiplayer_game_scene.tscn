@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwopvxphrfxu"]
+[gd_scene load_steps=8 format=3 uid="uid://cwopvxphrfxu"]
 
 [ext_resource type="Script" path="res://Multiplayer/multiplayer_game_scene.gd" id="1_nylgb"]
 [ext_resource type="PackedScene" uid="uid://fj4ouhttn3x2" path="res://Player/player.tscn" id="2_3ny6l"]
 [ext_resource type="PackedScene" uid="uid://brosirc5itm8c" path="res://Enemy/enemy_triangle.tscn" id="3_lwe78"]
 [ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="4_jxm1n"]
 [ext_resource type="Script" path="res://Multiplayer/multiplayer_enemy_spawn.gd" id="5_afkdx"]
-[ext_resource type="Script" path="res://UI/round.gd" id="6_ra478"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pk2ng"]
 size = Vector2(13, 688)
@@ -51,15 +50,6 @@ script = ExtResource("5_afkdx")
 [node name="Timer" type="Timer" parent="EnemySpawn"]
 
 [node name="UI" type="Node2D" parent="."]
-
-[node name="Round" type="Label" parent="UI"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 65.0
-offset_bottom = 31.0
-theme_override_font_sizes/font_size = 30
-text = "Round 1 "
-script = ExtResource("6_ra478")
 
 [node name="Error" type="Label" parent="UI"]
 visible = false

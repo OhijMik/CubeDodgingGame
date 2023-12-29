@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkn5o6xefsdff"]
+[gd_scene load_steps=4 format=3 uid="uid://df62jlhcbotvd"]
 
-[ext_resource type="Script" path="res://EndScene.gd" id="1_eytok"]
-[ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="2_b5voi"]
-[ext_resource type="Script" path="res://UI/end_game_stats.gd" id="3_fok4k"]
-[ext_resource type="Script" path="res://UI/Title.gd" id="3_ukcgd"]
+[ext_resource type="Script" path="res://EndScene.gd" id="1_tqdod"]
+[ext_resource type="Texture2D" uid="uid://u8cc0w46qmal" path="res://Images/BlackBackground.jpg" id="2_aif0k"]
+[ext_resource type="Script" path="res://UI/Title.gd" id="3_wed5e"]
 
 [node name="EndScene" type="Node2D"]
-script = ExtResource("1_eytok")
+script = ExtResource("1_tqdod")
 
 [node name="StartButton" type="Button" parent="."]
 offset_left = 408.0
@@ -30,31 +29,18 @@ text = "Quit"
 show_behind_parent = true
 position = Vector2(576, 324)
 scale = Vector2(4.44788, 3.34021)
-texture = ExtResource("2_b5voi")
+texture = ExtResource("2_aif0k")
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="."]
 offset_left = 416.0
-offset_top = 48.0
-offset_right = 736.0
-offset_bottom = 117.0
-theme_override_font_sizes/font_size = 50
-text = "Game Over"
-horizontal_alignment = 1
-script = ExtResource("3_ukcgd")
-
-[node name="Statistics" type="Label" parent="."]
-offset_left = 368.0
 offset_top = 136.0
-offset_right = 784.0
-offset_bottom = 281.0
-theme_override_font_sizes/font_size = 20
-text = "Round                   Points: 
-
-Highest round:
-Highest points: "
+offset_right = 736.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 50
+text = "Player won!"
 horizontal_alignment = 1
-script = ExtResource("3_fok4k")
+script = ExtResource("3_wed5e")
 
 [connection signal="button_down" from="StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="QuitButton" to="." method="_on_quit_button_button_down"]
